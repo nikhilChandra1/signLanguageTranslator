@@ -34,20 +34,20 @@ train_datagen = ImageDataGenerator(rescale=1./255,
     validation_split=0.25)
 
 train_generator = train_datagen.flow_from_directory(
-    './top30Classes',
+    'nikhilChandra1/signLanguageTranslator/top30Classes',
     target_size=(224, 224),
     batch_size= 32,
     class_mode='categorical',
     subset='training')
 
 validation_generator = train_datagen.flow_from_directory(
-    './top30Classes',
+    'nikhilChandra1/signLanguageTranslator/top30Classes',
     target_size=(224, 224),
     batch_size= 32,
     class_mode='categorical',
     subset='validation')
 
-filePath="/home/aslt/modelFiles/callbacksResNetWeights.hdf5"
+filePath="nikhilChandra1/signLanguageTranslator/callbacksResNetWeights.hdf5"
 checkpoint = ModelCheckpoint(filePath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 classifier.fit_generator(
     train_generator,
