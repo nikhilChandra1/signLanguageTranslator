@@ -30,22 +30,19 @@ from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale=1./255,
     shear_range=0.2,
     zoom_range=0.2,
-    horizontal_flip=True,
-    validation_split=0.25)
+    horizontal_flip=True)
 
 train_generator = train_datagen.flow_from_directory(
     'nikhilChandra1/signLanguageTranslator/top30Classes',
     target_size=(224, 224),
     batch_size= 32,
-    class_mode='categorical',
-    subset='training')
+    class_mode='categorical')
 
 validation_generator = train_datagen.flow_from_directory(
-    'nikhilChandra1/signLanguageTranslator/top30Classes',
+    'nikhilChandra1/signLanguageTranslator/top30ClassesTesting',
     target_size=(224, 224),
     batch_size= 32,
-    class_mode='categorical',
-    subset='validation')
+    class_mode='categorical')
 
 filePath="nikhilChandra1/signLanguageTranslator/callbacksResNetWeights.hdf5"
 checkpoint = ModelCheckpoint(filePath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
