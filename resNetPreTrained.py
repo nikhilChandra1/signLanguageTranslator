@@ -51,7 +51,7 @@ classifier.fit_generator(
     steps_per_epoch = train_generator.samples,
     validation_data = validation_generator, 
     validation_steps = validation_generator.samples,
-    epochs = 50,
+    epochs = 10,
     callbacks = [checkpoint])
 
 
